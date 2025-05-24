@@ -1,13 +1,25 @@
+"""
+Набор юнит-тестов для проверки корректности вычислений
+площадей фигур и работы вспомогательных функций.
+
+Тесты проверяют:
+- правильность вычисления площади круга,
+- правильность вычисления площади треугольника,
+- корректность определения прямоугольности треугольника,
+- работу общего интерфейса для фигур.
+"""
+
 import unittest
 from area.circle import Circle
 from area.triangle import Triangle
 from area.any import compute_area
+import math
 
 
 class TestArea(unittest.TestCase):
     def test_circle_area(self):
         c = Circle(1)
-        self.assertAlmostEqual(c.area(), 3.14159, places=4)
+        self.assertAlmostEqual(c.area(), math.pi)
 
     def test_triangle_area(self):
         t = Triangle(3, 4, 5)
@@ -25,7 +37,7 @@ class TestArea(unittest.TestCase):
         t = Triangle(3, 4, 5)
         c = Circle(1)
         self.assertAlmostEqual(compute_area(t), 6.0)
-        self.assertAlmostEqual(compute_area(c), 3.14159, places=4)
+        self.assertAlmostEqual(compute_area(c), math.pi)
 
 
 if __name__ == '__main__':
